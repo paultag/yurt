@@ -1,4 +1,13 @@
 import requests
+import datetime as dt
+import json
+import os
+
+
+def get_nest_wrapper():
+    info = json.load(open(os.path.abspath(
+        os.path.expanduser("~/.nest.key")), "r"))
+    return NestAPI(**info)
 
 
 def _create_models(info):
@@ -50,6 +59,9 @@ class NestSensor(object):
             "temperature": self.data['target_temperature'],
             "humidity": self.data['target_humidity'],
         }
+
+    def get_timestamp(self):
+        return dt.datetime.fromtimestamp(self.data['$timestamp'] / 1000)
 
 
 class NestAPI(object):
