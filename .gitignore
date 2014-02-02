@@ -1,4 +1,4 @@
-local_settings
+local_settings.py
 *yurt*egg*
 *.pyc
 *.swp
