@@ -54,8 +54,16 @@ class NestSensor(object):
 
     def get_target_readings(self):
         return {
-            "temperature": self.data['target_temperature'],
-            "humidity": self.data['target_humidity'],
+            "temperature": {
+                "target": self.data['target_temperature'],
+                "max": self.data['target_temperature_high'],
+                "min": self.data['target_temperature_low'],
+            },
+            "humidity": {
+                "target": self.data['target_humidity'],
+                "max": None,
+                "min": None,
+            }
         }
     def get_timestamp(self):
         # milisecond => second
