@@ -2,7 +2,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = ''
 DEBUG = False
-TEMPLATE_DEBUG = False1
+TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = []
 INSTALLED_APPS = (
     'django.contrib.admin',

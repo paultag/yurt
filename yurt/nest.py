@@ -19,10 +19,8 @@ def _create_models(info):
         house = NestHouse(structure_id, structure)
         for device_id in house.data['devices']:
             device_id = device_id[len("device."):]
-
             device = devices[device_id]
             device.update(shared[device_id])
-
             house.add_sensor(NestSensor(device_id, device))
         yield house
 
@@ -59,8 +57,8 @@ class NestSensor(object):
             "temperature": self.data['target_temperature'],
             "humidity": self.data['target_humidity'],
         }
-
     def get_timestamp(self):
+        # milisecond => second
         return dt.datetime.fromtimestamp(self.data['$timestamp'] / 1000)
 
 
